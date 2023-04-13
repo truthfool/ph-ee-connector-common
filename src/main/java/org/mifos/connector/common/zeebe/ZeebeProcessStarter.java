@@ -82,7 +82,7 @@ public class ZeebeProcessStarter {
 
         String transactionId = zeebeUtil.generateTransactionId();
         variables.put(ZeebeVariables.TRANSACTION_ID, transactionId);
-
+        variables.put(ZeebeVariables.ORIGIN_DATE, Instant.now().toEpochMilli());
         logger.info("starting workflow HERE:");
         ProcessInstanceEvent instance = zeebeClient.newCreateInstanceCommand()
                 .bpmnProcessId(workflowId)
